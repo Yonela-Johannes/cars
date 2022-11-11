@@ -1,0 +1,44 @@
+<div class="main-search-container">
+    <div>
+        <table>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Registration_Number</th>
+            </tr>
+            {{#each cars}}
+                <tr>
+                    <td>{{make}}</td>
+                    <td>{{model}}</td>
+                    <td>{{color}}</td>
+                    <td>{{price}}</td>
+                    <td>{{reg_number}}</td> 
+                </tr>
+            {{/each}}
+    </div>
+    <div class="inner-container">
+        <form action="/cars/search" method="post">
+                <div class="description_container">
+                    <div class="inner-content">
+                        <select name="make">
+                            <option disabled selected hidden value="">Select Make</option>
+                            {{#each makes}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="inner-content">
+                        <select name="color">
+                            <option disabled selected hidden value="">Select Color</option>
+                            {{#each colors}}
+                                <option value={{this}}>{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>                          
+                <button type="submit">Search</button>
+                </div>
+        </form>
+    </div>
+</div>
