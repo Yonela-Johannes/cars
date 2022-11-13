@@ -3,19 +3,26 @@ const axios = require('axios')
 const Routes = () => {
     const home = async (req, res) => {
         // GETTING ALL CARS
-        let cars = await axios.get('http://api-tutor.herokuapp.com/v1/cars')
+        let cars = await axios.get('https://api-tutor.herokuapp.com/v1/cars')
             .then(res => res.data)
-            // GETTING CARS COLORS
-        let colors = await axios.get("http://api-tutor.herokuapp.com/v1/colors")
+         // GETTING CARS COLORS
+        let colors = await axios.get("https://api-tutor.herokuapp.com/v1/colors")
         .then(res => res.data)
         // GETTING CARWS MAKE
         let makes = await axios.get("https://api-tutor.herokuapp.com/v1/makes")
         .then(res => res.data)
-
-        res.render('home', {
+        let selectColors = await axios.get("http://api-tutor.herokuapp.com/v1/colors")
+        .then(res => res.data)
+        // GETTING CARS MAKE
+        let selectMake = await axios.get("https://api-tutor.herokuapp.com/v1/makes")
+        .then((response) => response.data)
+        
+        res.render('search', {
             cars,
             colors,
-            makes
+            makes,
+            selectMake,
+            selectColors
         })
     }
 
@@ -43,9 +50,10 @@ const Routes = () => {
         }
         let selectColors = await axios.get("http://api-tutor.herokuapp.com/v1/colors")
         .then(res => res.data)
-        // GETTING CARWS MAKE
+        // GETTING CARS MAKE
         let selectMake = await axios.get("https://api-tutor.herokuapp.com/v1/makes")
         .then((response) => response.data)
+        
         res.render('search', {
             cars,
             selectMake,

@@ -1,23 +1,5 @@
 <div class="main-search-container">
-    <div>
-        <table>
-            <tr>
-                <th>Make</th>
-                <th>Model</th>
-                <th>Color</th>
-                <th>Price</th>
-                <th>Registration_Number</th>
-            </tr>
-            {{#each cars}}
-                <tr>
-                    <td>{{make}}</td>
-                    <td>{{model}}</td>
-                    <td>{{color}}</td>
-                    <td>{{price}}</td>
-                    <td>{{reg_number}}</td> 
-                </tr>
-            {{/each}}
-    </div>
+    <h1>Car Widget API</h1>
     <div class="inner-container">
         <form action="/cars/search" method="post">
                 <div class="description_container">
@@ -40,5 +22,53 @@
                 <button type="submit">Search</button>
                 </div>
         </form>
+    </div>
+    <div class="tables-container">
+        <div>
+            <table>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Registration_Number</th>
+                </tr>
+                {{#each cars}}
+                    <tr>
+                        <td>{{make}}</td>
+                        <td>{{model}}</td>
+                        <td>{{color}}</td>
+                        <td>{{price}}</td>
+                        <td>{{reg_number}}</td> 
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+        <div class="tables">
+            <div>
+                <table>
+                <th>Make</th>
+                <tr>
+                    {{#selectMake}}
+                        <tr>
+                            <td>{{this}}</td>
+                        </tr>
+                    {{/selectMake}}
+                </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                <th>Colors</th>
+                <tr>
+                    {{#selectColors}}
+                        <tr>
+                            <td>{{this}}</td>
+                        </tr>
+                    {{/selectColors}}
+                </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
